@@ -31,6 +31,8 @@ import java.io.File;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 
+import de.greenrobot.event.EventBus;
+
 public class ChanSettings {
     public enum MediaAutoLoadMode implements OptionSettingItem {
         // ALways auto load, either wifi or mobile
@@ -117,6 +119,8 @@ public class ChanSettings {
     public static final BooleanSetting anonymize;
     public static final BooleanSetting anonymizeIds;
     public static final BooleanSetting showAnonymousName;
+    public static final BooleanSetting revealImageSpoilers;
+    public static final BooleanSetting revealTextSpoilers;
     public static final BooleanSetting repliesButtonsBottom;
     public static final BooleanSetting confirmExit;
     public static final BooleanSetting tapNoReply;
@@ -126,6 +130,7 @@ public class ChanSettings {
     public static final BooleanSetting postFilename;
     public static final BooleanSetting neverHideToolbar;
     public static final BooleanSetting controllerSwipeable;
+    public static final BooleanSetting saveBoardFolder;
 
     public static final BooleanSetting watchEnabled;
     public static final BooleanSetting watchCountdown;
@@ -198,6 +203,12 @@ public class ChanSettings {
         developer = new BooleanSetting(p, "preference_developer", false);
 
         saveLocation = new StringSetting(p, "preference_image_save_location", Environment.getExternalStorageDirectory() + File.separator + "Clover");
+        saveLocation.addCallback(new Setting.SettingCallback<String>() {
+            @Override
+            public void onValueChange(Setting setting, String value) {
+                EventBus.getDefault().post(new SettingChanged<>(saveLocation));
+            }
+        });
         saveOriginalFilename = new BooleanSetting(p, "preference_image_save_original", false);
         shareUrl = new BooleanSetting(p, "preference_image_share_url", false);
         networkHttps = new BooleanSetting(p, "preference_network_https", true);
@@ -205,6 +216,8 @@ public class ChanSettings {
         anonymize = new BooleanSetting(p, "preference_anonymize", false);
         anonymizeIds = new BooleanSetting(p, "preference_anonymize_ids", false);
         showAnonymousName = new BooleanSetting(p, "preference_show_anonymous_name", false);
+        revealImageSpoilers = new BooleanSetting(p, "preference_reveal_image_spoilers", false);
+        revealTextSpoilers = new BooleanSetting(p, "preference_reveal_text_spoilers", false);
         repliesButtonsBottom = new BooleanSetting(p, "preference_buttons_bottom", false);
         confirmExit = new BooleanSetting(p, "preference_confirm_exit", false);
         tapNoReply = new BooleanSetting(p, "preference_tap_no_reply", false);
@@ -214,6 +227,7 @@ public class ChanSettings {
         postFilename = new BooleanSetting(p, "preference_post_filename", false);
         neverHideToolbar = new BooleanSetting(p, "preference_never_hide_toolbar", false);
         controllerSwipeable = new BooleanSetting(p, "preference_controller_swipeable", true);
+        saveBoardFolder = new BooleanSetting(p, "preference_save_subboard", false);
 
         watchEnabled = new BooleanSetting(p, "preference_watch_enabled", false);
         watchEnabled.addCallback(new Setting.SettingCallback<Boolean>() {
@@ -336,6 +350,14 @@ public class ChanSettings {
             this.theme = theme;
             this.color = color;
             this.accentColor = accentColor;
+        }
+    }
+
+    public static class SettingChanged<T> {
+        public final Setting<T> setting;
+
+        public SettingChanged(Setting<T> setting) {
+            this.setting = setting;
         }
     }
 }

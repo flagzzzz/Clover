@@ -67,6 +67,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="add">Add</string>
     <string name="close">Close</string>
     <string name="back">Back</string>
+    <string name="up">Up</string>
     <string name="ok">OK</string>
     <string name="exit">Exit</string>
     <string name="delete">Delete</string>
@@ -326,6 +327,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     <string name="filters_screen">Filters</string>
 
+    <string name="save_location_screen">Save location</string>
+    <string name="write_permission_required_title">Storage permission required</string>
+    <string name="write_permission_required">
+"Permission to access storage is required for browsing files.
+
+Re-enable this permission in the app settings if you permanently disabled it."</string>
+    <string name="write_permission_app_settings">App settings</string>
+    <string name="write_permission_grant">Grant</string>
+
     <string name="album_download_screen">Select images (%1$d / %2$d)</string>
     <string name="album_download_none_checked">Please select images to download</string>
     <string name="album_download_confirm">%1$s will be downloaded to the folder %2$s</string>
@@ -401,6 +411,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="setting_use_new_captcha">Use the new captcha</string>
     <string name="setting_use_new_captcha_description">Enable to use the newer recaptcha.</string>
     <string name="setting_save_original_filename">Save original filename</string>
+    <string name="setting_save_board_folder">Save images in a board folder</string>
+    <string name="setting_save_board_folder_description">Create a folder for each board to store images in</string>
     <string name="setting_share_url">Share url to image</string>
     <string name="setting_share_url_description">Share the url to the image instead of the image itself</string>
     <string name="setting_network_https">Use HTTPS</string>
@@ -410,6 +422,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="setting_anonymize">Make everyone Anonymous</string>
     <string name="setting_anonymize_ids">Hide IDs</string>
     <string name="setting_show_anonymous_name">Show Anonymous username</string>
+    <string name="settings_reveal_image_spoilers">Reveal image spoilers</string>
+    <string name="settings_reveal_text_spoilers">Reveal text spoilers</string>
+    <string name="settings_reveal_text_spoilers_description">Makes the spoiler text appear clicked</string>
     <string name="setting_buttons_bottom">Reply buttons on the bottom</string>
     <string name="setting_confirm_exit">Confirm before exit</string>
     <string name="setting_confirm_exit_title">Confirm exit</string>
